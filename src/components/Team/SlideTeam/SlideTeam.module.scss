@@ -1,0 +1,44 @@
+.team {
+  &__slide {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 33.3%;
+    box-sizing: padding-box;
+    padding-right: 15px;
+    padding-left: 15px;
+
+    img {
+      width: 100%;
+      border-radius: 30px;
+    }
+  }
+
+  &__persone {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    background-color: #f6e8c9;
+    border-radius: 30px;
+    width: 300px;
+    bottom: -50px;
+  }
+
+  &__title {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 30px;
+    color: #2d2d2d;
+    margin-bottom: 10px;
+  }
+
+  &__description {
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 20px;
+    color: #2d2d2d;
+  }
+}

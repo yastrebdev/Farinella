@@ -1,0 +1,23 @@
+.link {
+  position: relative;
+  font-size: 18px;
+  font-weight: 300;
+  color: #2d2d2d;
+  &:not(:last-child) {
+    margin-right: 25px;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background-color: #dbdbdb;
+    border-radius: 2px;
+    left: 0;
+    bottom: -1px;
+    transition: width 0.2s ease-in-out;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}
