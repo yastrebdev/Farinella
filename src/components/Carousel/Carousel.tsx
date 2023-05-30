@@ -18,20 +18,41 @@ const Carousel: React.FC<CarouselProps> = ({ children, quantitySlides, paginatio
 
   const slides = children.length;
 
+  console.log(slideIndex)
+
   useEffect(() => {
+
+    if (slideIndex >= (slides - 1) && quantitySlides === 2) {
+      setSlideIndex(slideIndex - (slides - 1));
+    }
+
+    if (slideIndex >= (slides - 2) && quantitySlides === 3) {
+      setSlideIndex(slideIndex - (slides - 2));
+    }
+
     if (slideIndex >= slides) {
       setSlideIndex(slideIndex - slides);
     }
-    if (slideIndex < 0) {
+
+    if (slideIndex < 0 && quantitySlides !== 2 && quantitySlides !== 3) {
       setSlideIndex(slideIndex + slides);
     }
-  }, [slideIndex, slides]);
 
-  const slideIndexMove = (derection: string) => {
-    if (derection === 'right') {
+    if (slideIndex < 0 && quantitySlides === 2) {
+      setSlideIndex(slideIndex + (slides - 1));
+    }
+
+    if (slideIndex < 0 && quantitySlides === 3) {
+      setSlideIndex(slideIndex + (slides - 2));
+    }
+
+  }, [slideIndex, slides, quantitySlides]);
+
+  const slideIndexMove = (direction: string) => {
+    if (direction === 'right') {
       setSlideIndex(slideIndex + 1);
     }
-    if (derection === 'left') {
+    if (direction === 'left') {
       setSlideIndex(slideIndex - 1);
     }
   };

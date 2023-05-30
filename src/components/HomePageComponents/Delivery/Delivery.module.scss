@@ -1,0 +1,11 @@
+.delivery {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 50px;
+  }
+}

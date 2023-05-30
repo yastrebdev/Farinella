@@ -1,0 +1,13 @@
+.main {
+  padding-bottom: 120px;
+  &__products {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px; 
+    margin-bottom: 30px;
+  }
+  &__button {
+    display: flex;
+    justify-content: center;
+  }
+}

@@ -1,7 +1,8 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
+import { useAppDispatch } from '../../app/hook';
+import { addItem } from '../../redux/slices/productSlice';
 import ButtonPrimary from '../ButtonPrimary/ButtonPrimary';
-import { ReactComponent as Minus } from '../../assets/image/minus.svg';
-import { ReactComponent as Plus } from '../../assets/image/plus.svg';
 import mod from './ProductCard.module.scss';
 
 type ProductCardProps = {
@@ -12,7 +13,42 @@ type ProductCardProps = {
   price: string;
 };
 
-const ProductCard: React.FC<ProductCardProps> = ({ urlImg, productName, description, price }) => {
+export type CartItem = {
+  id: string;
+  urlImg: string;
+  productName: string;
+  description: string;
+  price: string;
+  count: number;
+};
+
+const ProductCard: React.FC<ProductCardProps> = ({
+  id,
+  urlImg,
+  productName,
+  description,
+  price,
+}) => {
+  const dispatch = useAppDispatch();
+  const [count, setCount] = useState(0);
+
+  const addToCart = () => {
+    const item: CartItem = {
+      id,
+      urlImg,
+      productName,
+      description,
+      price,
+      count: 0,
+    };
+    dispatch(addItem(item))
+    addProduct()
+  };
+
+  const addProduct = () => {
+    setCount(count + 1);
+  };
+
   return (
     <div className={mod.product_card}>
       <div className={mod.image_block}>
@@ -25,11 +61,11 @@ const ProductCard: React.FC<ProductCardProps> = ({ urlImg, productName, descript
         </div>
         <div className={mod.content_bot}>
           <span className={mod.price}>{price} ₽</span>
-          <div className={mod.button}>
+          <Link to={`/product/${id}`} className={mod.button_info}>
             <ButtonPrimary buttonText={'Подробнее'} height={'40px'} fontSize={'14px'}/>
-          </div>
+          </Link>
           <div className={mod.buy_block}>
-            <div className={mod.counter}>
+            {/* <div className={mod.counter}>
               <button>
                 <Minus />
               </button>
@@ -37,8 +73,17 @@ const ProductCard: React.FC<ProductCardProps> = ({ urlImg, productName, descript
               <button>
                 <Plus />
               </button>
+            </div> */}
+            <div className={mod.button}>
+              <ButtonPrimary
+                buttonText={'Беру'}
+                height={'40px'}
+                fontSize={'14px'}
+                counter={true}
+                count={count}
+                onClick={addToCart}
+              />
             </div>
-            <ButtonPrimary buttonText={'Беру'} height={'40px'} fontSize={'14px'}/>
           </div>
         </div>
       </div>

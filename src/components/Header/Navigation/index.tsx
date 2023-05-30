@@ -8,7 +8,7 @@ const Navigation = () => {
       <Link className={mod.link} to='menu'>Акции</Link>
       <Link className={mod.link} to='menu'>О нас</Link>
       <Link className={mod.link} to='menu'>Контакты</Link>
-      <Link className={mod.link} to='menu'>Отследить заказ</Link>
+      <Link className={mod.link} to='/track'>Отследить заказ</Link>
     </ul>
   );
 }

@@ -1,0 +1,27 @@
+.categories {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+.list {
+  display: flex;
+  background-color: #f4f4f4;
+  border-radius: 50px;
+  li {
+    padding: 16px;
+    width: 142px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+  }
+}
+
+.active {
+  background-color: #2d2d2d;
+  color: #ffffff;
+  transition: background-color 0.2s ease-in-out;
+}

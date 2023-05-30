@@ -1,17 +1,14 @@
-import AboutPizzeria from "../components/AboutPizzeria/AboutPizzeria";
-import Banner from "../components/Bunner/Banner";
-import Delivery from "../components/Delivery/Delivery";
-import Footer from "../components/Footer/Footer";
-import Header from "../components/Header";
-import Menu from "../components/Menu/Menu";
-import Pacman from "../components/Pacman/Pacman";
-import Stocks from "../components/Stocks/Stocks";
-import Team from "../components/Team/Team";
+import Banner from '../components/HomePageComponents/Banner/Banner';
+import Menu from '../components/HomePageComponents/Menu/Menu';
+import Stocks from '../components/HomePageComponents/Stocks/Stocks';
+import AboutPizzeria from '../components/HomePageComponents/AboutPizzeria/AboutPizzeria';
+import Team from '../components/HomePageComponents/Team/Team';
+import Delivery from '../components/HomePageComponents/Delivery/Delivery';
+import Pacman from '../components/HomePageComponents/Pacman/Pacman';
 
 const Home = () => {
   return (
     <>
-      <Header />
       <Banner />
       <Menu />
       <Stocks />
@@ -19,9 +16,8 @@ const Home = () => {
       <Team />
       <Delivery />
       <Pacman />
-      <Footer />
     </>
   );
-}
+};
 
-export default Home
+export default Home;
