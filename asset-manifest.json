@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/farinella/static/css/main.c494804d.css",
-    "main.js": "/farinella/static/js/main.1601882e.js",
+    "main.css": "/farinella/static/css/main.5f32c378.css",
+    "main.js": "/farinella/static/js/main.76f9d2b7.js",
     "static/media/banner-img.png": "/farinella/static/media/banner-img.4b9fc72f40d745f8218e.png",
     "static/media/main-about.png": "/farinella/static/media/main-about.65843d3f56a88722867c.png",
     "static/media/team-2.png": "/farinella/static/media/team-2.2066f7d0771e35c29103.png",
@@ -12,11 +12,7 @@
     "static/media/content-img-1.png": "/farinella/static/media/content-img-1.2faff855e0ca88829471.png",
     "static/media/content-img-2.png": "/farinella/static/media/content-img-2.a6fe6e6b54c27050bdd0.png",
     "static/media/content-img-3.png": "/farinella/static/media/content-img-3.b8bcc97119cf6c527400.png",
-    "static/media/pizza-img-4.png": "/farinella/static/media/pizza-img-4.c9c8532762ff3f1253d6.png",
-    "static/media/pizza-img-2.png": "/farinella/static/media/pizza-img-2.df11135248bfd1cc7ae4.png",
-    "static/media/pizza-img-3.png": "/farinella/static/media/pizza-img-3.b060ce0b9aa87ab528fb.png",
     "static/media/stocks-pizza.png": "/farinella/static/media/stocks-pizza.5026f350a7825464c662.png",
-    "static/media/pizza-img-1.png": "/farinella/static/media/pizza-img-1.f6d99075ee974f1fb98d.png",
     "static/media/geometria_medium.woff": "/farinella/static/media/geometria_medium.a060c51ba272df566e32.woff",
     "static/media/geometria_light.woff": "/farinella/static/media/geometria_light.75944e2132390a2b1a4b.woff",
     "static/media/logo-black.svg": "/farinella/static/media/logo-black.04a5c42502536919854f7f41fc1a4739.svg",
@@ -24,21 +20,29 @@
     "static/media/pacman.png": "/farinella/static/media/pacman.7eeb7d4f135f08d4e2bf.png",
     "static/media/super-stock.png": "/farinella/static/media/super-stock.0da25f0c67c5df88c172.png",
     "static/media/delivery-1.svg": "/farinella/static/media/delivery-1.f0bc6b1faa7c93d5250968b3b981ee20.svg",
+    "static/media/instagram.svg": "/farinella/static/media/instagram.ffc2f5442957aef44351e44561b07f24.svg",
     "static/media/delivery-2.svg": "/farinella/static/media/delivery-2.0b1c8f1a8cc34d92728421c32c78f45c.svg",
     "static/media/delivery-3.svg": "/farinella/static/media/delivery-3.40d111c22afd10a0bef5b6c62802ed75.svg",
+    "static/media/phone.svg": "/farinella/static/media/phone.112cc2a1946ffb8ebcd0c113b19556e3.svg",
     "static/media/cart-icon.svg": "/farinella/static/media/cart-icon.de8ca0d9544b6955e7fbcf12d82ff558.svg",
     "static/media/search-icon.svg": "/farinella/static/media/search-icon.90e5f955a838e0e1031ae1f2036d63c4.svg",
+    "static/media/circle-arrow.svg": "/farinella/static/media/circle-arrow.991e6cea45c4129b0de8d4e856d48563.svg",
+    "static/media/telegram.svg": "/farinella/static/media/telegram.212bcb6e686654266e21aef6faafdd7a.svg",
+    "static/media/email.svg": "/farinella/static/media/email.615daa87a0797094f4312e2a5cf7e888.svg",
     "static/media/arrow_left.svg": "/farinella/static/media/arrow_left.aaef77dfcf63a5438c3533d6fbd93792.svg",
     "static/media/arrow_right.svg": "/farinella/static/media/arrow_right.7f1ec840a344ca40217d6f15ebd199ba.svg",
     "static/media/plus.svg": "/farinella/static/media/plus.25e844dbb407bc09d26ec196acfcc8ad.svg",
     "index.html": "/farinella/index.html",
     "static/media/title-decoration.svg": "/farinella/static/media/title-decoration.2a49c6399b423b080774ee0f3b13455e.svg",
     "static/media/minus.svg": "/farinella/static/media/minus.32aad2c29b6289f5d26903ed5913a8fe.svg",
-    "main.c494804d.css.map": "/farinella/static/css/main.c494804d.css.map",
-    "main.1601882e.js.map": "/farinella/static/js/main.1601882e.js.map"
+    "static/media/vkontakte.svg": "/farinella/static/media/vkontakte.5961158fde507d65ba7e2b78cad75418.svg",
+    "static/media/close.svg": "/farinella/static/media/close.0237b37c086e9ac3329ace852d4f55c8.svg",
+    "static/media/arrow-sort.svg": "/farinella/static/media/arrow-sort.1a1cef9ca8cb727e078fbd371e34c913.svg",
+    "main.5f32c378.css.map": "/farinella/static/css/main.5f32c378.css.map",
+    "main.76f9d2b7.js.map": "/farinella/static/js/main.76f9d2b7.js.map"
   },
   "entrypoints": [
-    "static/css/main.c494804d.css",
-    "static/js/main.1601882e.js"
+    "static/css/main.5f32c378.css",
+    "static/js/main.76f9d2b7.js"
   ]
 }
