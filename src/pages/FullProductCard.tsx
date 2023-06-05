@@ -3,33 +3,80 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import mod from '../scss/FullProductCard.module.scss';
 import ButtonPrimary from '../components/ButtonPrimary/ButtonPrimary';
-import Counter from '../components/Counter/Counter';
+import { CartItem, addItem } from '../redux/slices/cartSlice';
+import { useAppDispatch, useAppSelector } from '../hooks/hook';
+import { RootState } from '../redux/store';
+import Supplements from '../components/FullPageComponents/Supplements';
+
+export type Supplement = {
+  urlImg: string,
+  name: string,
+  price: number
+}
 
 const FullProductCard = () => {
+  const dispatch = useAppDispatch();
+
+  const [supplements, setSupplements] = useState([]);
+
   const [product, setProduct] = useState<{
+    id: string;
     urlImg: string;
     productName: string;
-    price: string;
+    price: number;
     description: string;
+    added: Supplement;
   }>();
   const { id } = useParams();
   const navigate = useNavigate();
+
+  console.log(product)
+
+  const selectCartItemById = (id: string) => (state: RootState) => state.cart.items.find((obj) => obj.id === id)
+  const cartItem = useAppSelector(selectCartItemById(id ? id : ''));
+
+  const addedCount = cartItem ? cartItem.count : 0;
 
   useEffect(() => {
     async function fetchProduct() {
       try {
         const { data } = await axios.get('https://646c82af7b42c06c3b2b65e5.mockapi.io/items/' + id);
         setProduct(data);
+        setSupplements(data.added);
       } catch (error) {
-        alert('Ошибка при получении пиццы');
+        alert('Ошибка при получении товара');
         navigate('/');
       }
     }
     fetchProduct();
   }, []);
 
+  const addToCart = () => {
+    const item: any = {
+      ...product,
+      count: 0,
+    };
+    dispatch(addItem(item));
+  };
+
   if (!product) {
-    return <>'Загрузка...'</>;
+    return (
+      <div className={mod.wrapper}>
+        <div className={mod.loader}>
+          <div className={mod.circles}>
+            <span className={mod.one}></span>
+            <span className={mod.two}></span>
+            <span className={mod.three}></span>
+          </div>
+          <div className={mod.pacman}>
+            <span className={mod.top}></span>
+            <span className={mod.bottom}></span>
+            <span className={mod.left}></span>
+            <div className={mod.eye}></div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -95,12 +142,17 @@ const FullProductCard = () => {
               </div>
               <div className={mod.main__footer}>
                 <div className={mod.main__button}>
-                  <ButtonPrimary buttonText='Беру'/>
+                  <ButtonPrimary
+                    buttonText="Беру"
+                    count={addedCount}
+                    counter={true}
+                    onClick={addToCart}
+                  />
                 </div>
-                <Counter count={0}/>
               </div>
             </div>
           </div>
+          <Supplements ingredients={supplements}/>
         </div>
       </div>
     </div>

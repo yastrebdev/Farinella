@@ -8,7 +8,7 @@ import ButtonPrimary from '../../ButtonPrimary/ButtonPrimary';
 
 const Stocks = () => {
   return (
-    <div className={mod.stocks}>
+    <div id='stocks' className={mod.stocks}>
       <TitleBlock title={'Акции и скидки'} description={'надпись для декора'} />
       <Carousel quantitySlides={2} pagination={true} paginationQuantity={2} pt={50} pb={30}>
         <div className={mod.stocks__slide}>

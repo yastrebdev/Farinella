@@ -1,16 +1,36 @@
-import { Link } from 'react-router-dom'
-import mod from './Navigation.module.scss'
+import { Link, useLocation } from 'react-router-dom';
+import { Link as A, animateScroll as scroll } from 'react-scroll';
+import mod from './Navigation.module.scss';
 
 const Navigation = () => {
+  const location = useLocation();
   return (
     <ul className={mod.navigation}>
-      <Link className={mod.link} to='menu'>Меню</Link>
-      <Link className={mod.link} to='menu'>Акции</Link>
-      <Link className={mod.link} to='menu'>О нас</Link>
-      <Link className={mod.link} to='menu'>Контакты</Link>
-      <Link className={mod.link} to='/track'>Отследить заказ</Link>
+      {location.pathname !== '/farinella' ? (
+        <Link className={mod.link} to="/farinella">
+          На главную
+        </Link>
+      ) : (
+        <>
+          <A className={mod.link} to="menu" smooth={true}>
+            Меню
+          </A>
+          <A className={mod.link} to="stocks" smooth={true}>
+            Акции
+          </A>
+          <A className={mod.link} to="about" smooth={true}>
+            О нас
+          </A>
+          <A className={mod.link} to="contacts" smooth={true}>
+            Контакты
+          </A>
+        </>
+      )}
+      <Link className={mod.link} to="/track">
+        Отследить заказ
+      </Link>
     </ul>
   );
-}
+};
 
-export default Navigation
+export default Navigation;

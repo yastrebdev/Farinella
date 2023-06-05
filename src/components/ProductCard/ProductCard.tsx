@@ -1,36 +1,17 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
-import { useAppDispatch } from '../../app/hook';
-import { addItem } from '../../redux/slices/productSlice';
+import { Link } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../hooks/hook';
+import { CartItem, addItem } from '../../redux/slices/cartSlice';
+import { ProductItem } from '../../redux/slices/productSlice';
+import { RootState } from '../../redux/store';
 import ButtonPrimary from '../ButtonPrimary/ButtonPrimary';
 import mod from './ProductCard.module.scss';
 
-type ProductCardProps = {
-  id: string;
-  urlImg: string;
-  productName: string;
-  description: string;
-  price: string;
-};
-
-export type CartItem = {
-  id: string;
-  urlImg: string;
-  productName: string;
-  description: string;
-  price: string;
-  count: number;
-};
-
-const ProductCard: React.FC<ProductCardProps> = ({
-  id,
-  urlImg,
-  productName,
-  description,
-  price,
-}) => {
+const ProductCard: React.FC<ProductItem> = ({ id, urlImg, productName, description, price }) => {
   const dispatch = useAppDispatch();
-  const [count, setCount] = useState(0);
+  const selectCartItemById = (id: string) => (state: RootState) => state.cart.items.find((obj) => obj.id === id)
+  const cartItem = useAppSelector(selectCartItemById(id));
+
+  const addedCount = cartItem ? cartItem.count : 0;
 
   const addToCart = () => {
     const item: CartItem = {
@@ -41,12 +22,7 @@ const ProductCard: React.FC<ProductCardProps> = ({
       price,
       count: 0,
     };
-    dispatch(addItem(item))
-    addProduct()
-  };
-
-  const addProduct = () => {
-    setCount(count + 1);
+    dispatch(addItem(item));
   };
 
   return (
@@ -62,25 +38,16 @@ const ProductCard: React.FC<ProductCardProps> = ({
         <div className={mod.content_bot}>
           <span className={mod.price}>{price} ₽</span>
           <Link to={`/product/${id}`} className={mod.button_info}>
-            <ButtonPrimary buttonText={'Подробнее'} height={'40px'} fontSize={'14px'}/>
+            <ButtonPrimary buttonText={'Подробнее'} height={'40px'} fontSize={'14px'} />
           </Link>
           <div className={mod.buy_block}>
-            {/* <div className={mod.counter}>
-              <button>
-                <Minus />
-              </button>
-              <span>0</span>
-              <button>
-                <Plus />
-              </button>
-            </div> */}
             <div className={mod.button}>
               <ButtonPrimary
                 buttonText={'Беру'}
                 height={'40px'}
                 fontSize={'14px'}
                 counter={true}
-                count={count}
+                count={addedCount}
                 onClick={addToCart}
               />
             </div>

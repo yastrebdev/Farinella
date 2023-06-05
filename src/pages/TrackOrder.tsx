@@ -1,6 +1,24 @@
+import { useState, useEffect } from 'react';
+import { ReactComponent as Close } from '../assets/image/close.svg';
 import mod from '../scss/TrackOrder.module.scss';
 
 const TrackOrder = () => {
+  const [openPopup, setOpenPopup] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  const viewPopup = () => {
+    setOpenPopup(true);
+    document.body.style.overflow = 'hidden';
+  };
+
+  const closePopup = () => {
+    setOpenPopup(false);
+    document.body.style.overflow = 'visible';
+  };
+
   return (
     <div className={mod.main}>
       <div className="container">
@@ -33,7 +51,7 @@ const TrackOrder = () => {
               <span className={mod.main__price}>3000 ₽</span>
             </div>
             <div className={mod.main__footer}>
-              <button>Отменить заказ</button>
+              <button onClick={viewPopup}>Отменить заказ</button>
               <div className={mod.main__status}>
                 <span>Статус заказа:</span>
                 <span>Собираем заказ</span>
@@ -42,6 +60,23 @@ const TrackOrder = () => {
           </div>
         </div>
       </div>
+
+      {openPopup && (
+        <div className={mod.popup}>
+          <div className={mod.popup__overflow}></div>
+          <div className={mod.popup__content}>
+            <div className={mod.popup__close}>
+              <Close onClick={closePopup} />
+            </div>
+            <h4 className={mod.popup__title}>Отмена заказа</h4>
+            <p>
+              Для отмены заказа позвоните <br />
+              нам по номеру
+            </p>
+            <h2>8 (800) 245 - 12 - 25</h2>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

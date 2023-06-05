@@ -1,8 +1,7 @@
 .cart {
   padding-bottom: 50px;
   &__wrapper {
-    display: grid;
-    grid-template-columns: 8fr 4fr;
-    gap: 30px;
+    display: flex;
+    align-items: start;
   }
 }

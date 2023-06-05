@@ -1,23 +1,34 @@
-import { useAppSelector } from '../../../app/hook';
+import { useAppSelector } from '../../../hooks/hook';
 import { RootState } from '../../../redux/store';
 import Product from './Product/Product';
-import mod from './CartProductBlock.module.scss'
+import { ReactComponent as CartIcon } from '../../../assets/image/cart-icon.svg';
+import mod from './CartProductBlock.module.scss';
 
 const CartProductBlock = () => {
-  const { items } = useAppSelector((state: RootState) => state.product);
+  const { items } = useAppSelector((state: RootState) => state.cart);
+
+  const totalPrice = items.reduce((acc, item) => acc + item.price * item.count, 0);
   return (
     <div className={mod.main}>
       <div className={mod.main__product}>
         {items.map((item) => (
-          <Product key={item.id} {...item}/>
+          <Product key={item.id} {...item} />
         ))}
       </div>
-      <div className={mod.main__total}>
-        <h4>Итого</h4>
-        <span>2 997 ₽</span>
-      </div>
+      {items.length > 0 && (
+        <div className={mod.main__total}>
+          <h4>Итого</h4>
+          <span>{totalPrice} ₽</span>
+        </div>
+      )}
+      {items.length === 0 && (
+        <div className={mod.cart__empty}>
+          <CartIcon className={mod.cart__icon} />
+          <h4>Корзина пустая</h4>
+        </div>
+      )}
     </div>
   );
-}
+};
 
-export default CartProductBlock
+export default CartProductBlock;

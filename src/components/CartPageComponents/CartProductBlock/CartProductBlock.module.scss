@@ -1,4 +1,6 @@
 .main {
+  margin-right: 30px;
+  width: 100%;
   &__total {
     padding: 10px 30px;
     display: flex;
@@ -15,11 +17,36 @@
       color: #ffffff;
     }
     span {
+      width: 100%;
       font-weight: 500;
       font-size: 24px;
       line-height: 30px;
       text-align: right;
       color: #ffffff;
     }
+  }
+}
+
+.cart {
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 200px;
+    padding-bottom: 200px;
+    h4 {
+      font-weight: 300;
+      font-size: 24px;
+    }
+  }
+
+  &__icon * {
+    fill: #858a73;
+  }
+  &__icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 30px;
   }
 }

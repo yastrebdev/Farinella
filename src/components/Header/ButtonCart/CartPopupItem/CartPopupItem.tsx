@@ -1,11 +1,18 @@
-import React from 'react'
-import { CartItem } from '../../../ProductCard/ProductCard';
 import { ReactComponent as Close } from '../../../../assets/image/close.svg';
-import { ReactComponent as Minus } from '../../../../assets/image/minus.svg';
-import { ReactComponent as Plus } from '../../../../assets/image/plus.svg';
+import { CartItem, removeItem } from '../../../../redux/slices/cartSlice';
 import mod from './CartPopupItem.module.scss'
+import Counter from '../../../Counter/Counter';
+import { useAppDispatch } from '../../../../hooks/hook';
 
-const CartPopupItem: React.FC<CartItem> = ({ urlImg, productName, price }) => {
+const CartPopupItem: React.FC<CartItem> = ({ urlImg, productName, price, count, id }) => {
+  const dispatch = useAppDispatch();
+
+  const clickItemRemove = () => {
+    if (window.confirm('Правда удалить?')) {
+      dispatch(removeItem(id));
+    }
+  }
+
   return (
     <div className={mod.main}>
       <div className={mod.main__img}>
@@ -14,15 +21,13 @@ const CartPopupItem: React.FC<CartItem> = ({ urlImg, productName, price }) => {
       <div className={mod.main__content}>
         <div className={mod.main__header}>
           <h5 className={mod.main__title}>{productName}</h5>
-          <Close className={mod.main__close}/>
+          <Close onClick={clickItemRemove} className={mod.main__close}/>
         </div>
         <div className={mod.main__footer}>
           <div className={mod.main__counter}>
-            <Minus className={mod.main__point}/>
-            <span>1</span>
-            <Plus className={mod.main__point}/>
+            <Counter count={count} id={id}/>
           </div>
-          <span className={mod.main__price}>{price} ₽</span>
+          <span className={mod.main__price}>{price * count} ₽</span>
         </div>
       </div>
     </div>

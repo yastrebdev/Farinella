@@ -8,7 +8,7 @@ import mod from './AboutPizzeria.module.scss';
 
 const AboutPizzeria = () => {
   return (
-    <div className={mod.about}>
+    <div id='about' className={mod.about}>
       <div className="container">
         <TitleBlock title={'О пиццерии'} description={'Только мы'} />
         <div className={mod.about__main}>
