@@ -5,14 +5,15 @@ import { ReactComponent as CartIcon } from '../../../assets/image/cart-icon.svg'
 import mod from './CartProductBlock.module.scss';
 
 const CartProductBlock = () => {
-  const { items } = useAppSelector((state: RootState) => state.cart);
+  const { items, supplements } = useAppSelector((state: RootState) => state.cart);
 
-  const totalPrice = items.reduce((acc, item) => acc + item.price * item.count, 0);
+  const supplementsPrice = supplements.reduce((acc, item) => acc + item.price * item.count, 0);
+  const totalPrice = items.reduce((acc, item) => acc + item.price * item.count + supplementsPrice, 0);
   return (
     <div className={mod.main}>
       <div className={mod.main__product}>
         {items.map((item) => (
-          <Product key={item.id} {...item} />
+          <Product key={item.id} {...item}/>
         ))}
       </div>
       {items.length > 0 && (

@@ -9,12 +9,24 @@ export type CartItem = {
   count: number;
 };
 
+export type SupplementsItem = {
+  namePlusId: string;
+  asProductId: string;
+  urlImg: string;
+  name: string;
+  price: number;
+  seqnum: string;
+  count: number;
+};
+
 interface SliceState {
   items: CartItem[];
+  supplements: SupplementsItem[];
 }
 
 const initialState: SliceState = {
   items: [],
+  supplements: [],
 };
 
 const cartSlice = createSlice({
@@ -23,7 +35,7 @@ const cartSlice = createSlice({
   reducers: {
     addItem(state, action: PayloadAction<CartItem>) {
       const findeItem = state.items.find((obj: any) => obj.id === action.payload.id);
-      
+
       if (findeItem) {
         findeItem.count++;
       } else {
@@ -45,10 +57,50 @@ const cartSlice = createSlice({
     },
     clearItems(state) {
       state.items = [];
+      state.supplements = [];
     },
-  }
-})
 
-export const { addItem, minusItem, removeItem, clearItems } = cartSlice.actions;
+    addIngredient(state, action: PayloadAction<SupplementsItem>) {
+      const findeItem = state.supplements.find(
+        (obj: any) => obj.namePlusId === action.payload.namePlusId,
+      );
+
+      if (findeItem) {
+        findeItem.count++;
+      } else {
+        state.supplements.push({
+          ...action.payload,
+          count: 1,
+        });
+      }
+    },
+    minusIngredient(state, action: PayloadAction<string>) {
+      const findeItem = state.supplements.find(
+        (obj: any) => obj.namePlusId === action.payload,
+      );
+      if (findeItem) {
+        findeItem.count--;
+      }
+    },
+    removeIngredient(state, action: PayloadAction<String>) {
+      state.supplements = state.supplements.filter((obj) => obj.namePlusId !== action.payload);
+    },
+    clearIngredients(state, action: PayloadAction<SupplementsItem>) {
+      state.supplements = state.supplements.filter((obj) => obj.namePlusId !== action.payload.namePlusId);
+      console.log(action.payload);
+    },
+  },
+});
+
+export const {
+  addItem,
+  minusItem,
+  removeItem,
+  clearItems,
+  addIngredient,
+  removeIngredient,
+  minusIngredient,
+  clearIngredients,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

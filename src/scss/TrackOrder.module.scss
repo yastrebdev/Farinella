@@ -13,7 +13,7 @@
     justify-content: space-between;
     margin-bottom: 61px;
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -30px;
       left: 0;
@@ -40,7 +40,7 @@
     position: relative;
     margin-bottom: 41px;
     &::before {
-      content: '';
+      content: "";
       position: absolute;
       bottom: -20px;
       left: 0;
@@ -66,7 +66,7 @@
       color: #2d2d2d;
       &:last-child {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
       }
     }
     &:not(:last-child) {
@@ -90,7 +90,7 @@
       color: #2d2d2d;
       &:last-child {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
       }
     }
   }
@@ -129,14 +129,14 @@
 .popup {
   &__overflow {
     visibility: visible;
-    opacity: .7;
+    opacity: 0.7;
     position: fixed;
     z-index: 2;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba($color: #2d2d2d, $alpha: .7);
+    background-color: rgba($color: #2d2d2d, $alpha: 0.7);
     transition: all 0.3s ease-in-out;
   }
 

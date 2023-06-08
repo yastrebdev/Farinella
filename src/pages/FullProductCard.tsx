@@ -3,21 +3,13 @@ import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 import mod from '../scss/FullProductCard.module.scss';
 import ButtonPrimary from '../components/ButtonPrimary/ButtonPrimary';
-import { CartItem, addItem } from '../redux/slices/cartSlice';
+import { CartItem, SupplementsItem, addItem } from '../redux/slices/cartSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/hook';
 import { RootState } from '../redux/store';
 import Supplements from '../components/FullPageComponents/Supplements';
 
-export type Supplement = {
-  urlImg: string,
-  name: string,
-  price: number
-}
-
 const FullProductCard = () => {
   const dispatch = useAppDispatch();
-
-  const [supplements, setSupplements] = useState([]);
 
   const [product, setProduct] = useState<{
     id: string;
@@ -25,12 +17,10 @@ const FullProductCard = () => {
     productName: string;
     price: number;
     description: string;
-    added: Supplement;
+    added: SupplementsItem;
   }>();
   const { id } = useParams();
   const navigate = useNavigate();
-
-  console.log(product)
 
   const selectCartItemById = (id: string) => (state: RootState) => state.cart.items.find((obj) => obj.id === id)
   const cartItem = useAppSelector(selectCartItemById(id ? id : ''));
@@ -42,7 +32,6 @@ const FullProductCard = () => {
       try {
         const { data } = await axios.get('https://646c82af7b42c06c3b2b65e5.mockapi.io/items/' + id);
         setProduct(data);
-        setSupplements(data.added);
       } catch (error) {
         alert('Ошибка при получении товара');
         navigate('/');
@@ -152,7 +141,7 @@ const FullProductCard = () => {
               </div>
             </div>
           </div>
-          <Supplements ingredients={supplements}/>
+          <Supplements ingredients={product.added} id={product.id}/>
         </div>
       </div>
     </div>

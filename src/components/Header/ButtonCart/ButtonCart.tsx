@@ -15,7 +15,7 @@ import mod from './ButtonCart.module.scss';
 
 const ButtonCart = () => {
   const dispatch = useAppDispatch();
-  const { items } = useAppSelector((state: RootState) => state.cart);
+  const { items, supplements } = useAppSelector((state: RootState) => state.cart);
   const [overflow, setOverflow] = useState(false);
 
   const ref = useRef(null);
@@ -38,7 +38,8 @@ const ButtonCart = () => {
   // scroll settings -------------------- //
 
   const totalCount = items.reduce((acc, item) => acc + item.count, 0);
-  const totalPrice = items.reduce((acc, item) => acc + item.price * item.count, 0);
+  const supplementsPrice = supplements.reduce((acc, item) => acc + item.price * item.count, 0);
+  const totalPrice = items.reduce((acc, item) => acc + item.price * item.count + supplementsPrice, 0);
 
   const visibleCart = () => {
     setOverflow(!overflow);
