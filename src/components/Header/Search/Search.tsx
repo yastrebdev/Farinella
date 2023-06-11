@@ -4,6 +4,7 @@ import { ReactComponent as SearchIcon } from '../../../assets/image/search-icon.
 import { Link } from 'react-router-dom';
 import mod from './Search.module.scss';
 import { CartItem } from '../../../redux/slices/cartSlice';
+import { useResize } from '../../../hooks/use-resize';
 
 const Search = () => {
   const [isActive, setActive] = useState(false);
@@ -45,42 +46,75 @@ const Search = () => {
     setResults(results);
   };
 
+  const { isScreenSm } = useResize();
+
+  console.log(isScreenSm);
+
   return (
     <div ref={ref} className={mod.search}>
-      <button
-        onClick={viewInput}
-        className={mod.button}
-        style={{
-          right: isActive ? '10px' : '0px',
-        }}>
-        <SearchIcon />
-      </button>
-      {isActive && (
+      {isScreenSm ? (
+        <button
+          onClick={viewInput}
+          className={mod.button}
+          style={{
+            right: isActive ? '10px' : '0px',
+          }}>
+          <SearchIcon />
+        </button>
+      ) : (
         <div>
-          <div className={mod.input}>
+          <div className={mod.input__mobile}>
             <input onChange={handleSearch} type="text" placeholder="Поиск" />
+            <SearchIcon className={mod.input__mobile__icon}/>
           </div>
           <div className={mod.results}>
-            {searchResults.length === 0 ? (
-              <div className={mod.result}>
-                <p>Нет результатов</p>
-              </div>
-            ) : (
-              searchResults.map((item: any) => {
-                return (
-                  <Link
-                    onClick={viewInput}
-                    to={`/product/${item.id}`}
-                    key={item.id}
-                    className={mod.result}>
-                    <img src={item.urlImg} alt={item.productName} />
-                    <p>{item.productName}</p>
-                  </Link>
-                );
-              })
-            )}
+            {searchResults.map((item: any) => {
+              return (
+                <Link
+                  onClick={viewInput}
+                  to={`/product/${item.id}`}
+                  key={item.id}
+                  className={mod.result}>
+                  <img src={item.urlImg} alt={item.productName} />
+                  <p>{item.productName}</p>
+                </Link>
+              );
+            })}
           </div>
         </div>
+      )}
+      {isActive && (
+        <>
+          {isScreenSm ? (
+            <div>
+              <div className={mod.input}>
+                <input onChange={handleSearch} type="text" placeholder="Поиск" />
+              </div>
+              <div className={mod.results}>
+                {searchResults.length === 0 ? (
+                  <div className={mod.result}>
+                    <p>Нет результатов</p>
+                  </div>
+                ) : (
+                  searchResults.map((item: any) => {
+                    return (
+                      <Link
+                        onClick={viewInput}
+                        to={`/product/${item.id}`}
+                        key={item.id}
+                        className={mod.result}>
+                        <img src={item.urlImg} alt={item.productName} />
+                        <p>{item.productName}</p>
+                      </Link>
+                    );
+                  })
+                )}
+              </div>
+            </div>
+          ) : (
+            ''
+          )}
+        </>
       )}
     </div>
   );

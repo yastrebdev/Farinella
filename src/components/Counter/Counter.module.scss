@@ -4,6 +4,11 @@
   border-radius: 50px;
   display: flex;
   align-items: center;
+  @media (max-width: 576px) {
+    padding-left: 6px;
+    padding-right: 6px;
+    height: 32px;
+  }
   span {
     padding: 0 20px;
     font-weight: 300;
@@ -11,6 +16,10 @@
     line-height: 30px;
     text-align: center;
     color: #2d2d2d;
+    @media (max-width: 576px) {
+      font-size: 16px;
+      padding: 0 12px;
+    }
   }
   &__point {
     cursor: pointer;

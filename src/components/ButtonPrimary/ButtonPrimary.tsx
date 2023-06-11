@@ -24,7 +24,7 @@ const ButtonPrimary: React.FC<ButtonPrimaryProps> = (
     <button onClick={onClick} className={mod.button} style={
       {
         height: `${height}`,
-        fontSize: `${fontSize}`
+        fontSize: `${fontSize}`,
       }}>
       {
         counter

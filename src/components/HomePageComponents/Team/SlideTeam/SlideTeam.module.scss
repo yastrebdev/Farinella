@@ -8,6 +8,9 @@
     box-sizing: padding-box;
     padding-right: 15px;
     padding-left: 15px;
+    @media (max-width: 768px) {
+      min-width: 50%;
+    }
 
     img {
       width: 100%;
@@ -25,6 +28,16 @@
     border-radius: 30px;
     width: 300px;
     bottom: -50px;
+    @media (max-width: 1124px) {
+      width: 250px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+    }
+    @media (max-width: 992px) {
+      width: 200px;
+      padding-right: 10px;
+      padding-left: 10px;
+    }
   }
 
   &__title {
@@ -32,7 +45,15 @@
     font-size: 24px;
     line-height: 30px;
     color: #2d2d2d;
+    text-align: center;
     margin-bottom: 10px;
+    @media (max-width: 1124px) {
+      font-size: 22px;
+    }
+    @media (max-width: 992px) {
+      font-size: 18px;
+      margin-bottom: 5px;
+    }
   }
 
   &__description {
@@ -40,5 +61,9 @@
     font-size: 16px;
     line-height: 20px;
     color: #2d2d2d;
+    text-align: center;
+    @media (max-width: 992px) {
+      font-size: 14px;
+    }
   }
 }

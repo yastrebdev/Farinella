@@ -1,13 +1,25 @@
 .slide {
   position: relative;
-}
-
-.bannerBg {
   min-width: 100%;
 }
 
+.bannerBg {
+  width: 100%;
+}
+
 .buttonMain {
+  display: flex;
+  flex-direction: column;
   position: absolute;
-  left: 100px;
-  top: 331px;
+  min-width: 210px;
+  left: 8%;
+  top: 47%;
+  @media (max-width: 768px) {
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+  }
+  @media (max-width: 576px) {
+    top: 32%;
+  }
 }

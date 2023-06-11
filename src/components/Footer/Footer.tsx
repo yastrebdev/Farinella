@@ -84,7 +84,7 @@ const Footer = () => {
               <div className={mod.footer__copyright}>
                 <span>Все права защищены</span>
                 <a href="#">Пользовательское соглашение</a>
-                <a href="#">Политика обработки персональных данных</a>
+                <a href="#">Политика обработки данных</a>
               </div>
             </div>
           </div>

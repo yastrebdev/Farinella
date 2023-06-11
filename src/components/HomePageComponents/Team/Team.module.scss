@@ -1,4 +1,7 @@
 .team {
   padding-top: 60px;
   padding-bottom: 60px;
+  @media (max-width: 576px) {
+    display: none;
+  }
 }

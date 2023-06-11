@@ -7,6 +7,10 @@
   &__img {
     min-width: 140px;
     height: 140px;
+    @media (max-width: 576px) {
+      min-width: 108px;
+      height: 108px;
+    }
     overflow: hidden;
     border-radius: 20px;
     img {
@@ -37,6 +41,9 @@
       font-size: 20px;
       line-height: 25px;
       color: #2d2d2d;
+      @media (max-width: 576px) {
+        margin-bottom: 16px;
+      }
     }
   }
   &__close {
@@ -58,30 +65,16 @@
     width: 100%;
     padding-bottom: 20px;
   }
-  &__counter {
-    padding: 5px 8px;
-    background-color: #f4f4f4;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    span {
-      padding: 0 20px;
-      font-weight: 300;
-      font-size: 24px;
-      line-height: 30px;
-      text-align: center;
-      color: #2d2d2d;
-    }
-  }
-  &__point {
-    cursor: pointer;
-  }
+
   &__price {
     font-weight: 300;
     font-size: 24px;
     line-height: 30px;
     text-align: right;
     color: #2d2d2d;
+    @media (max-width: 576px) {
+      font-size: 22px;
+    }
   }
 
   &:not(:last-child) {

@@ -7,6 +7,9 @@
 .image {
   max-width: 37px;
   margin-bottom: 30px;
+  @media (max-width: 576px) {
+    margin-bottom: 16px;
+  }
 }
 
 .title {
@@ -15,6 +18,9 @@
   line-height: 45px;
   color: #2d2d2d;
   margin-bottom: 5px;
+  @media (max-width: 576px) {
+    font-size: 32px;
+  }
 }
 
 .description {

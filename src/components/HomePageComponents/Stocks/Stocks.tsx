@@ -2,30 +2,30 @@ import Carousel from '../../Carousel/Carousel';
 import TitleBlock from '../../TitleBlock/TitleBlock';
 import stockPizza from '../../../assets/image/stocks-pizza.png';
 import stockSuper from '../../../assets/image/super-stock.png';
-import {ReactComponent as Circle} from '../../../assets/image/circle-arrow.svg';
 import mod from './Stocks.module.scss';
-import ButtonPrimary from '../../ButtonPrimary/ButtonPrimary';
+import { useResize } from '../../../hooks/use-resize';
 
 const Stocks = () => {
+  const { width } = useResize();
+
   return (
-    <div id='stocks' className={mod.stocks}>
+    <div id="stocks" className={mod.stocks}>
       <TitleBlock title={'Акции и скидки'} description={'надпись для декора'} />
-      <Carousel quantitySlides={2} pagination={true} paginationQuantity={2} pt={50} pb={30}>
-        <div className={mod.stocks__slide}>
+      <Carousel
+        quantitySlides={width >= 576 ? 2 : 1}
+        pagination={true}
+        paginationQuantity={width >= 576 ? 2 : 3}
+        pt={width >= 576 ? 50 : 32}
+        pb={width >= 576 ? 30 : 24}>
+        <a href="#" className={mod.stocks__slide}>
           <img src={stockPizza} alt="pizza-stock" />
-          <div className={mod.stocks__button}>
-            <ButtonPrimary buttonText={'Участвовать'}/>
-          </div>
-        </div>
-        <div className={mod.stocks__slide}>
+        </a>
+        <a href="#" className={mod.stocks__slide}>
           <img src={stockSuper} alt="super-super" />
-          <button className={mod.stocks__circleButton}>
-            <Circle />
-          </button>
-        </div>
-        <div className={mod.stocks__slide}>
+        </a>
+        <a href="#" className={mod.stocks__slide}>
           <img src={stockPizza} alt="pizza-stock" />
-        </div>
+        </a>
       </Carousel>
     </div>
   );

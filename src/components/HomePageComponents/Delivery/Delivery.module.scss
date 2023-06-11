@@ -1,11 +1,16 @@
 .delivery {
   padding-top: 60px;
   padding-bottom: 60px;
+  @media (max-width: 576px) {
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+
   &__content {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     gap: 30px;
-    margin-top: 50px;
+    margin-top: 35px;
+    @media (max-width: 576px) {
+      margin-top: 0;
+    }
   }
 }

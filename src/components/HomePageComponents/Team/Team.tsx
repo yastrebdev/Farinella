@@ -5,6 +5,7 @@ import team1 from '../../../assets/image/team-1.png'
 import team2 from '../../../assets/image/team-2.png'
 import team3 from '../../../assets/image/team-3.png'
 import mod from './Team.module.scss'
+import { useResize } from '../../../hooks/use-resize';
 
 const slideData = [
   {
@@ -35,10 +36,12 @@ const slideData = [
 ]
 
 const Team = () => {
+  const { width } = useResize()
+
   return (
     <div className={mod.team}>
       <TitleBlock title={'Мы профессионалы'} description={'Лучшие специалисты'}/>
-      <Carousel quantitySlides={3} pagination={true} paginationQuantity={3} pt={50} pb={80}>
+      <Carousel quantitySlides={width < 768 ? 2 : 3} pagination={true} paginationQuantity={3} pt={50} pb={80}>
         {
           slideData.map((slide: any, i) => <SlideTeam key={i} {...slide}/>)
         }

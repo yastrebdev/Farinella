@@ -13,7 +13,7 @@ const Categories = () => {
     <div className={mod.categories}>
       <ul className={mod.list}>
         {categories.map((categoryName, index) => (
-          <li onClick={() => onClickCategory(index)} className={avtiveindex === index ? `${mod.active}` : ''} key={index}>
+          <li onClick={() => onClickCategory(index)} className={avtiveindex === index ? `${mod.active}` : `${mod.item}`} key={index}>
             {categoryName}
           </li>
         ))}

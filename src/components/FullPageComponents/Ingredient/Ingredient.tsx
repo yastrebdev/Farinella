@@ -3,9 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../hooks/hook';
 import {ReactComponent as Plus} from '../../../assets/image/plus.svg'
 import {ReactComponent as Minus} from '../../../assets/image/minus.svg'
-import mod from './Ingredient.module.scss';
 import { RootState } from '../../../redux/store';
-// import Counter from '../../Counter/Counter';
+import mod from './Ingredient.module.scss';
 
 const Ingredient = ({ name, urlImg, price }: SupplementsItem) => {
   const dispatch = useAppDispatch();
