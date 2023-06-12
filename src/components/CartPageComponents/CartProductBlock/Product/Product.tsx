@@ -62,7 +62,7 @@ const Product: React.FC<CartItem> = ({ urlImg, productName, description, price, 
             <p className={mod.main__description}>{description}</p>
           </div>
           <div className={mod.main__footer}>
-            <div>
+            <div className={mod.main__counter}>
               <Counter count={count} id={id} />
             </div>
             <span className={mod.main__price}>{price * count} ₽</span>

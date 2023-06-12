@@ -6,8 +6,8 @@ const HeaderFilter = () => {
   return (
     <div className={mod.main}>
       <div className='container'>
+        <Categories />
         <div className={mod.main__wrapper}>
-          <Categories />
           <Sort />
         </div>
       </div>

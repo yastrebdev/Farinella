@@ -1,7 +1,16 @@
 .cart {
   padding-bottom: 50px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 15px;
+  @media (max-width: 768px) {
+    padding-top: 32px;
+  }
   &__wrapper {
     display: flex;
     align-items: flex-start;
+    @media (max-width: 1200px) {
+      flex-direction: column;
+    }
   }
 }

@@ -73,9 +73,15 @@ const Footer = () => {
               </div>
               <div className={mod.footer__item4}>
                 <div className={mod.footer__pay}>
-                  <img src={mir} alt="mir" />
-                  <img src={visa} alt="visa" />
-                  <img src={masterCard} alt="masterCard" />
+                  <div className={mod.footer__img}>
+                    <img src={mir} alt="mir" />
+                  </div>
+                  <div className={mod.footer__img}>
+                    <img src={visa} alt="visa" />
+                  </div>
+                  <div className={mod.footer__img}>
+                    <img src={masterCard} alt="masterCard" />
+                  </div>
                 </div>
               </div>
             </div>
