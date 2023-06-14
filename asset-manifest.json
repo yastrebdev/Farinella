@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/farinella/static/css/main.8385488a.css",
-    "main.js": "/farinella/static/js/main.fd2aa515.js",
+    "main.css": "/farinella/static/css/main.fb9e1db7.css",
+    "main.js": "/farinella/static/js/main.c9f785bd.js",
     "static/media/banner-img.png": "/farinella/static/media/banner-img.4b9fc72f40d745f8218e.png",
     "static/media/main-about.png": "/farinella/static/media/main-about.65843d3f56a88722867c.png",
     "static/media/banner_tablet.png": "/farinella/static/media/banner_tablet.293273a98602e879ea40.png",
@@ -42,11 +42,11 @@
     "static/media/vkontakte.svg": "/farinella/static/media/vkontakte.5961158fde507d65ba7e2b78cad75418.svg",
     "static/media/close.svg": "/farinella/static/media/close.0237b37c086e9ac3329ace852d4f55c8.svg",
     "static/media/arrow-sort.svg": "/farinella/static/media/arrow-sort.1a1cef9ca8cb727e078fbd371e34c913.svg",
-    "main.8385488a.css.map": "/farinella/static/css/main.8385488a.css.map",
-    "main.fd2aa515.js.map": "/farinella/static/js/main.fd2aa515.js.map"
+    "main.fb9e1db7.css.map": "/farinella/static/css/main.fb9e1db7.css.map",
+    "main.c9f785bd.js.map": "/farinella/static/js/main.c9f785bd.js.map"
   },
   "entrypoints": [
-    "static/css/main.8385488a.css",
-    "static/js/main.fd2aa515.js"
+    "static/css/main.fb9e1db7.css",
+    "static/js/main.c9f785bd.js"
   ]
 }
