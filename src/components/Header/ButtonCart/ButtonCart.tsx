@@ -19,7 +19,6 @@ const ButtonCart = () => {
   const [overflow, setOverflow] = useState(false);
 
   const ref = useRef(null);
-  useOutsideClick(ref, () => setOverflow(false));
 
   // scroll settings -------------------- //
   const [scroll, setScroll] = useState(0);
@@ -37,12 +36,32 @@ const ButtonCart = () => {
   };
   // scroll settings -------------------- //
 
+  const visible = () => (document.body.style.overflow = 'visible');
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && event.composedPath().includes(ref.current)) {
+        setOverflow(false)
+        visible()
+      }
+    }
+
+    document.body.addEventListener('click', handleClickOutside)
+
+    return () => {
+      document.body.removeEventListener('click', handleClickOutside)
+    }
+  }, [])
+
   const totalCount = items.reduce((acc, item) => acc + item.count, 0);
   const supplementsPrice = supplements.reduce((acc, item) => acc + item.price * item.count, 0);
-  const totalPrice = items.reduce((acc, item) => acc + item.price * item.count + supplementsPrice, 0);
+  const totalPrice = items.reduce(
+    (acc, item) => acc + item.price * item.count + supplementsPrice,
+    0,
+  );
 
   const visibleCart = () => {
-    setOverflow(!overflow);
+    setOverflow(true);
     window.document.body.style.overflow = 'hidden';
   };
 
@@ -80,10 +99,13 @@ const ButtonCart = () => {
       )}
       <div className={mod.cart}>
         <div
+          ref={ref}
           className={`${overflow === true ? `${mod.cart__active}` : ''} ${
             mod.cart__overflow
           }`}></div>
-        <div ref={ref} className={`${overflow === true ? `${mod.cart__popup_open}` : ''} ${mod.cart__popup}`}>
+        <div
+          // ref={ref}
+          className={`${overflow === true ? `${mod.cart__popup_open}` : ''} ${mod.cart__popup}`}>
           <div className={mod.cart__header}>
             <h4>Корзина</h4>
             <Close onClick={hiddenCart} className={mod.cart__close} />
@@ -122,21 +144,5 @@ const ButtonCart = () => {
     </>
   );
 };
-
-function useOutsideClick(ref: any, handler: any) {
-  useEffect(() => {
-    function handleClickOutside(event: any) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        handler();
-        window.document.body.style.overflow = 'visible';
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-}
 
 export default ButtonCart;

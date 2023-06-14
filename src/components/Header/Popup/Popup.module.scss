@@ -3,7 +3,7 @@
     visibility: visible;
     opacity: .7;
     position: fixed;
-    z-index: 2;
+    z-index: 99;
     top: 0;
     left: 0;
     width: 100%;
@@ -21,7 +21,7 @@
     padding: 50px;
     background-color: #ffffff;
     border-radius: 40px;
-    z-index: 3;
+    z-index: 100;
   }
   &__close {
     position: absolute;

@@ -5,6 +5,8 @@ type ButtonPrimaryProps = {
   buttonText: string;
   height?: string;
   fontSize?: string;
+  bgColor?: string;
+  color?: string;
   counter?: boolean;
   count?: number;
   onClick?: () => void;
@@ -15,6 +17,8 @@ const ButtonPrimary: React.FC<ButtonPrimaryProps> = (
     buttonText,
     height,
     fontSize,
+    bgColor,
+    color,
     counter,
     count,
     onClick
@@ -25,6 +29,8 @@ const ButtonPrimary: React.FC<ButtonPrimaryProps> = (
       {
         height: `${height}`,
         fontSize: `${fontSize}`,
+        backgroundColor: `${bgColor}`,
+        color: `${color}`,
       }}>
       {
         counter

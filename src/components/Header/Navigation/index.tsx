@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Link as A, animateScroll as scroll } from 'react-scroll';
+import { Link as A } from 'react-scroll';
 import mod from './Navigation.module.scss';
 
 const Navigation = () => {

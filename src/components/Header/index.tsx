@@ -1,26 +1,45 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import LogoSvgBlack from '../../assets/image/logo-black.svg';
+import LogoSvgWhite from '../../assets/image/logo-white.svg';
 import ButtonPrimary from '../ButtonPrimary/ButtonPrimary';
 import ButtonCart from './ButtonCart/ButtonCart';
 import Navigation from './Navigation';
 import mod from './Header.module.scss';
 import Search from './Search/Search';
 import { ReactComponent as Menu } from '../../assets/image/menu.svg';
+import { ReactComponent as Close } from '../../assets/image/close.svg';
 import { Link, useLocation } from 'react-router-dom';
 import Popup from './Popup/Popup';
-import { useMatchMedia } from '../../hooks/use-match-media';
+import { Link as A } from 'react-scroll';
 import { useResize } from '../../hooks/use-resize';
 
 const Header = () => {
   const [activePopup, setOpenPopup] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
   const location = useLocation();
+
+  const hidden = () => (document.body.style.overflow = 'hidden');
+  const visible = () => (document.body.style.overflow = 'visible');
 
   const openPopup = () => {
     setOpenPopup(true);
-    document.body.style.overflow = 'hidden';
+    hidden();
   };
 
-  // const { isTablet, isMobile }: any = useMatchMedia();
+  const clickBurger = () => {
+    setOpenMenu(true);
+    hidden()
+  };
+
+  const closeBurger = () => {
+    setOpenMenu(false);
+    visible()
+  }
+
+  // useEffect(() => {
+  //   openMenu === true ? hidden() : visible();
+  // }, [openMenu])
+
   const { isScreenXl } = useResize();
 
   return (
@@ -36,11 +55,61 @@ const Header = () => {
                 </Link>
               </div>
               {!isScreenXl ? (
-                <div className={mod.burger}>
-                  <button className={mod.burger__button}>
-                    <Menu />
-                  </button>
-                </div>
+                <>
+                  <div className={mod.burger}>
+                    <button onClick={clickBurger} className={mod.burger__button}>
+                      <Menu />
+                    </button>
+                  </div>
+                  <div className={mod.menu}>
+                    <div
+                      className={`${openMenu === true ? `${mod.menu__popup__open}` : ''} ${
+                        mod.menu__popup
+                      }`}>
+                      <div className={mod.menu__header}>
+                        <button onClick={closeBurger} className={mod.menu__burger}>
+                          <Close className={mod.menu__burger__icon} />
+                        </button>
+                        <img src={LogoSvgWhite} alt="logoWite" />
+                      </div>
+                      <div className={mod.menu__body}>
+                        <ul className={mod.menu__navigation}>
+                          {location.pathname !== '/farinella' ? (
+                            <Link onClick={closeBurger} className={mod.menu__link} to="/farinella">
+                              На главную
+                            </Link>
+                          ) : (
+                            <>
+                              <A onClick={closeBurger} className={mod.menu__link} to="menu" smooth={true}>
+                                Меню
+                              </A>
+                              <A onClick={closeBurger} className={mod.menu__link} to="stocks" smooth={true}>
+                                Акции
+                              </A>
+                              <A onClick={closeBurger} className={mod.menu__link} to="about" smooth={true}>
+                                О нас
+                              </A>
+                              <A onClick={closeBurger} className={mod.menu__link} to="contacts" smooth={true}>
+                                Контакты
+                              </A>
+                            </>
+                          )}
+                          <Link onClick={closeBurger} className={mod.menu__link} to="/track">
+                            Отследить заказ
+                          </Link>
+                        </ul>
+                        {/* <button>Связаться с нами</button> */}
+                        <ButtonPrimary buttonText={'Связаться с нами'} onClick={() => {
+                            closeBurger()
+                            openPopup()
+                          }} 
+                          bgColor={'#ffffff'}
+                          color={'#2d2d2d'}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </>
               ) : (
                 <div className={mod.navigation}>
                   <Navigation />
