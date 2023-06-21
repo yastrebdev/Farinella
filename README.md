@@ -38,4 +38,4 @@ This is a project created using the `create-react-app`
 
 #### `npm run build`
 
-To see the finished result, [go to](yastrebdev.github.io/Farinella/)
+To see the finished result, [go to]([yastrebdev.github.io/Farinella/](https://yastrebdev.github.io/Farinella/)https://yastrebdev.github.io/Farinella/)
