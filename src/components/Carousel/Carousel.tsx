@@ -13,17 +13,25 @@ type CarouselProps = {
   pb?: number;
 };
 
-const Carousel: React.FC<CarouselProps> = ({ children, quantitySlides, pagination, paginationQuantity, pt, pb }) => {
+const Carousel: React.FC<CarouselProps> = ({
+  children,
+  quantitySlides,
+  pagination,
+  paginationQuantity,
+  pt,
+  pb,
+}) => {
   const [slideIndex, setSlideIndex] = useState(0);
+  const [paginationIndex, setPaginationIndex] = useState(0);
   const slides = children.length;
+  const paglength = paginationQuantity ? paginationQuantity : 0;
 
   useEffect(() => {
-
-    if (slideIndex >= (slides - 1) && quantitySlides === 2) {
+    if (slideIndex >= slides - 1 && quantitySlides === 2) {
       setSlideIndex(slideIndex - (slides - 1));
     }
 
-    if (slideIndex >= (slides - 2) && quantitySlides === 3) {
+    if (slideIndex >= slides - 2 && quantitySlides === 3) {
       setSlideIndex(slideIndex - (slides - 2));
     }
 
@@ -42,8 +50,26 @@ const Carousel: React.FC<CarouselProps> = ({ children, quantitySlides, paginatio
     if (slideIndex < 0 && quantitySlides === 3) {
       setSlideIndex(slideIndex + (slides - 2));
     }
-
   }, [slideIndex, slides, quantitySlides]);
+
+  useEffect(() => {
+    if (paginationIndex === paglength) {
+      setPaginationIndex(0);
+    }
+    if (paginationIndex < 0) {
+      setPaginationIndex(paglength - 1);
+    }
+  }, [paginationIndex, slides, quantitySlides]);
+
+  const clickLeftArrow = () => {
+    slideIndexMove('left');
+    paginationIndexMove('left');
+  };
+
+  const clickRightArrow = () => {
+    slideIndexMove('right');
+    paginationIndexMove('right');
+  };
 
   const slideIndexMove = (direction: string) => {
     if (direction === 'right') {
@@ -51,6 +77,15 @@ const Carousel: React.FC<CarouselProps> = ({ children, quantitySlides, paginatio
     }
     if (direction === 'left') {
       setSlideIndex(slideIndex - 1);
+    }
+  };
+
+  const paginationIndexMove = (direction: string) => {
+    if (direction === 'right') {
+      setPaginationIndex(paginationIndex + 1);
+    }
+    if (direction === 'left') {
+      setPaginationIndex(paginationIndex - 1);
     }
   };
 
@@ -68,21 +103,27 @@ const Carousel: React.FC<CarouselProps> = ({ children, quantitySlides, paginatio
 
         {pagination === false ? (
           <div className={mod.buttonsMove}>
-            <button onClick={() => slideIndexMove('left')} className={`${mod.prev} ${mod.button}`}>
+            <button onClick={clickLeftArrow} className={`${mod.prev} ${mod.button}`}>
               <ArrowLeft />
             </button>
-            <button onClick={() => slideIndexMove('right')} className={`${mod.next} ${mod.button}`}>
+            <button onClick={clickRightArrow} className={`${mod.next} ${mod.button}`}>
               <ArrowRight />
             </button>
           </div>
         ) : (
           <div className={mod.buttonsWithPagination}>
-            <button onClick={() => slideIndexMove('left')} className={`${mod.prev} ${mod.button_pagination}`}>
-              <ArrowLeft className={mod.arrow}/>
+            <button onClick={clickLeftArrow} className={`${mod.prev} ${mod.button_pagination}`}>
+              <ArrowLeft className={mod.arrow} />
             </button>
-            <Pagination quantity={paginationQuantity || 0}/>
-            <button onClick={() => slideIndexMove('right')} className={`${mod.next} ${mod.button_pagination}`}>
-              <ArrowRight className={mod.arrow}/>
+            <Pagination
+              quantity={paginationQuantity || 0}
+              paginationIndex={paginationIndex}
+              setPaginationIndex={setPaginationIndex}
+              slideIndex={slideIndex}
+              setSlideIndex={setSlideIndex}
+            />
+            <button onClick={clickRightArrow} className={`${mod.next} ${mod.button_pagination}`}>
+              <ArrowRight className={mod.arrow} />
             </button>
           </div>
         )}
