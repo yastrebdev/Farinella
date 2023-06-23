@@ -1,46 +1,41 @@
-# Getting Started with Create React App
+# Pizza and pasta delivery
+![project-image](https://lh3.googleusercontent.com/pw/AJFCJaWVcsKlleIVHmsYXulAXrWSkak2mtrZU2C-0Z34wjmm9s266zL6U3Ik6ibzZHGyNx_Pp3Z1g-3RtDZuGddptUwGZbnpkoB4DibFGqMbNi_Aj8TbTmmrXcn0tKpQQRiHtY30M7h_rKEE2ta2LmYkgmo=w2550-h960-s-no?authuser=0)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## About project
 
-## Available Scripts
+I was approached by an acquaintance with a request to advise her friend from Canada on website design. I responded, and eventually the design evolved into a full-fledged frontend development using the react library.
 
-In the project directory, you can run:
+The design was implemented in 10 days, including all the edits. The bulk of the development completed in 30 days.
 
-### `npm start`
+## Difficult moments in the development process
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. I had to write my own carousel component to freely customize the sliders
+2. Adding items to your cart is not difficult. But it's not easy to add ingredients separately for each item
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Stack
 
-### `npm test`
+This is a project created using the `create-react-app`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> **Main stack:** `react`, `redux toolkit`, `typescript`
 
-### `npm run build`
+> **Additional technologies:** `react-router-dom`, `axios`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+> The **mockAPI** service is used to host the data
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Running the project on a PC
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Download the repository on the PC
+2. You must have the latest version of node.js installed
+3. Open the project in the development environment and install the required dependencies using the command
 
-### `npm run eject`
+#### `npm install`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+4. Run the project with the command
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### `npm start`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+5. If you want to build a project, use the command
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### `npm run build`
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+To see the finished result, [go to](https://yastrebdev.github.io/Farinella/)
