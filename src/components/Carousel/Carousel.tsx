@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, ReactElement, ReactNode } from 'react';
 import { ReactComponent as ArrowLeft } from '../../assets/image/arrow_left.svg';
 import { ReactComponent as ArrowRight } from '../../assets/image/arrow_right.svg';
 import mod from './Carousel.module.scss';
 import Pagination from './Pagination/Pagination';
 
 type CarouselProps = {
-  children: any;
+  children: ReactNode[];
   quantitySlides: number;
   paginationQuantity?: number;
   pagination: boolean;
@@ -15,10 +15,7 @@ type CarouselProps = {
 
 const Carousel: React.FC<CarouselProps> = ({ children, quantitySlides, pagination, paginationQuantity, pt, pb }) => {
   const [slideIndex, setSlideIndex] = useState(0);
-
   const slides = children.length;
-
-  console.log(slideIndex)
 
   useEffect(() => {
 

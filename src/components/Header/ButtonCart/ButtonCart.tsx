@@ -104,7 +104,6 @@ const ButtonCart = () => {
             mod.cart__overflow
           }`}></div>
         <div
-          // ref={ref}
           className={`${overflow === true ? `${mod.cart__popup_open}` : ''} ${mod.cart__popup}`}>
           <div className={mod.cart__header}>
             <h4>Корзина</h4>

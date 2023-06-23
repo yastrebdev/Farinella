@@ -1,11 +1,11 @@
+import { useResize } from '../../../hooks/use-resize';
+import TitleBlock from '../../TitleBlock/TitleBlock';
+import DeliveryCard from './DeliveryCard/DeliveryCard';
+import Carousel from '../../Carousel/Carousel';
 import img1 from '../../../assets/image/delivery-1.svg';
 import img2 from '../../../assets/image/delivery-2.svg';
 import img3 from '../../../assets/image/delivery-3.svg';
-import TitleBlock from '../../TitleBlock/TitleBlock';
-import DeliveryCard from './DeliveryCard/DeliveryCard';
 import mod from './Delivery.module.scss';
-import Carousel from '../../Carousel/Carousel';
-import { useResize } from '../../../hooks/use-resize';
 
 const deliveryData = [
   {

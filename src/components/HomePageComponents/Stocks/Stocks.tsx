@@ -1,9 +1,9 @@
+import { useResize } from '../../../hooks/use-resize';
 import Carousel from '../../Carousel/Carousel';
 import TitleBlock from '../../TitleBlock/TitleBlock';
 import stockPizza from '../../../assets/image/stocks-pizza.png';
 import stockSuper from '../../../assets/image/super-stock.png';
 import mod from './Stocks.module.scss';
-import { useResize } from '../../../hooks/use-resize';
 
 const Stocks = () => {
   const { width } = useResize();
@@ -17,13 +17,13 @@ const Stocks = () => {
         paginationQuantity={width >= 576 ? 2 : 3}
         pt={width >= 576 ? 50 : 32}
         pb={width >= 576 ? 30 : 24}>
-        <a href="#" className={mod.stocks__slide}>
+        <a href="#none" className={mod.stocks__slide}>
           <img src={stockPizza} alt="pizza-stock" />
         </a>
-        <a href="#" className={mod.stocks__slide}>
+        <a href="#none" className={mod.stocks__slide}>
           <img src={stockSuper} alt="super-super" />
         </a>
-        <a href="#" className={mod.stocks__slide}>
+        <a href="#none" className={mod.stocks__slide}>
           <img src={stockPizza} alt="pizza-stock" />
         </a>
       </Carousel>

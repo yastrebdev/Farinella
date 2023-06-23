@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactComponent as Close } from '../../../../assets/image/close.svg';
 import {
   CartItem,
+  SupplementsItem,
   addIngredient,
   clearIngredients,
   minusIngredient,
@@ -9,11 +9,11 @@ import {
 } from '../../../../redux/slices/cartSlice';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hook';
 import { removeItem } from '../../../../redux/slices/cartSlice';
-import { ReactComponent as Plus } from '../../../../assets/image/plus.svg';
-import { ReactComponent as Minus } from '../../../../assets/image/minus.svg';
+import { ReactComponent as Close } from '../../../../assets/image/close.svg';
+import { RootState } from '../../../../redux/store';
 import Counter from '../../../Counter/Counter';
 import mod from './Product.module.scss';
-import { RootState } from '../../../../redux/store';
+import Supplements from './Supplements/Supplements';
 
 const Product: React.FC<CartItem> = ({ urlImg, productName, description, price, count, id }) => {
   const { supplements } = useAppSelector((state: RootState) => state.cart);
@@ -28,8 +28,8 @@ const Product: React.FC<CartItem> = ({ urlImg, productName, description, price, 
     }
   };
 
-  const addSupplements = (name: string): any => {
-    const ingredient: any = {
+  const addSupplements = (name: string) => {
+    const ingredient: SupplementsItem = {
       namePlusId: id + name,
       asProductId: id,
       name,
@@ -68,47 +68,12 @@ const Product: React.FC<CartItem> = ({ urlImg, productName, description, price, 
             <span className={mod.main__price}>{price * count} ₽</span>
           </div>
         </div>
-        <div className={mod.supplements}>
-          {productIngredients.map((item: any) => (
-            <div className={mod.supplements__item}>
-              <img src={item.urlImg} alt="" />
-              <Close
-                onClick={() => {
-                  deleteIngredient(item.namePlusId);
-                }}
-                className={mod.supplements__close}
-              />
-              <div className={mod.supplements__info}>
-                <span className={mod.supplements__name}>
-                  {item.name}
-                  <span className={mod.supplements__count}>
-                    {item.count > 1 && `X${item.count}`}
-                  </span>
-                </span>
-                <span className={mod.supplements__price}>{item.price * item.count} ₽</span>
-              </div>
-              <div className={mod.supplements__counter}>
-                <div>
-                  <Minus
-                    onClick={() => {
-                      countMinus(item.name, item.count);
-                    }}
-                    className={mod.supplements__counter__button}
-                  />
-                </div>
-                <span>{item.count}</span>
-                <div>
-                  <Plus
-                    onClick={() => {
-                      addSupplements(item.name);
-                    }}
-                    className={mod.supplements__counter__button}
-                  />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <Supplements
+          productIngredients={productIngredients}
+          addSupplements={addSupplements}
+          countMinus={countMinus}
+          deleteIngredient={deleteIngredient}
+        />
       </div>
       <Close onClick={clickItemRemove} className={mod.main__close} />
     </div>

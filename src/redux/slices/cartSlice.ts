@@ -15,7 +15,7 @@ export type SupplementsItem = {
   urlImg: string;
   name: string;
   price: number;
-  seqnum: string;
+  seqnum?: string;
   count: number;
 };
 
@@ -34,7 +34,7 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addItem(state, action: PayloadAction<CartItem>) {
-      const findeItem = state.items.find((obj: any) => obj.id === action.payload.id);
+      const findeItem = state.items.find((obj: CartItem) => obj.id === action.payload.id);
 
       if (findeItem) {
         findeItem.count++;
@@ -62,7 +62,7 @@ const cartSlice = createSlice({
 
     addIngredient(state, action: PayloadAction<SupplementsItem>) {
       const findeItem = state.supplements.find(
-        (obj: any) => obj.namePlusId === action.payload.namePlusId,
+        (obj: SupplementsItem) => obj.namePlusId === action.payload.namePlusId,
       );
 
       if (findeItem) {
@@ -76,7 +76,7 @@ const cartSlice = createSlice({
     },
     minusIngredient(state, action: PayloadAction<string>) {
       const findeItem = state.supplements.find(
-        (obj: any) => obj.namePlusId === action.payload,
+        (obj: SupplementsItem) => obj.namePlusId === action.payload,
       );
       if (findeItem) {
         findeItem.count--;

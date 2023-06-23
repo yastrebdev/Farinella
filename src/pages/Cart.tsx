@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
+import { RootState } from '../redux/store';
+import { useAppSelector } from '../hooks/hook';
 import CartProductBlock from '../components/CartPageComponents/CartProductBlock/CartProductBlock';
 import Order from '../components/CartPageComponents/Order/Order';
 import mod from '../scss/Cart.module.scss'
-import { RootState } from '../redux/store';
-import { useAppSelector } from '../hooks/hook';
 
 const Cart = () => {
   const { items } = useAppSelector((state: RootState) => state.cart);

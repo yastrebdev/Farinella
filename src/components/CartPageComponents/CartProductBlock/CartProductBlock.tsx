@@ -1,10 +1,10 @@
 import { useAppSelector } from '../../../hooks/hook';
 import { RootState } from '../../../redux/store';
-import Product from './Product/Product';
 import { ReactComponent as CartIcon } from '../../../assets/image/cart-icon.svg';
-import mod from './CartProductBlock.module.scss';
 import { useResize } from '../../../hooks/use-resize';
+import Product from './Product/Product';
 import CartPopupItem from '../../Header/ButtonCart/CartPopupItem/CartPopupItem';
+import mod from './CartProductBlock.module.scss';
 
 const CartProductBlock = () => {
   const { items, supplements } = useAppSelector((state: RootState) => state.cart);

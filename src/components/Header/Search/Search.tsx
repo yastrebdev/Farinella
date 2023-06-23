@@ -2,9 +2,10 @@ import axios from 'axios';
 import { useState, useEffect, useRef } from 'react';
 import { ReactComponent as SearchIcon } from '../../../assets/image/search-icon.svg';
 import { Link } from 'react-router-dom';
-import mod from './Search.module.scss';
 import { CartItem } from '../../../redux/slices/cartSlice';
 import { useResize } from '../../../hooks/use-resize';
+import mod from './Search.module.scss';
+import { useOutsideClick } from '../../../hooks/use-outside-click';
 
 const Search = () => {
   const [isActive, setActive] = useState(false);
@@ -31,8 +32,8 @@ const Search = () => {
     setActive(!isActive);
   };
 
-  const handleSearch = (e: any) => {
-    const value = e.target.value;
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.target.value;
 
     if (value.length < 3) {
       setResults([]);
@@ -65,10 +66,10 @@ const Search = () => {
         <div>
           <div className={mod.input__mobile}>
             <input onChange={handleSearch} type="text" placeholder="Поиск" />
-            <SearchIcon className={mod.input__mobile__icon}/>
+            <SearchIcon className={mod.input__mobile__icon} />
           </div>
           <div className={mod.results}>
-            {searchResults.map((item: any) => {
+            {searchResults.map((item: CartItem) => {
               return (
                 <Link
                   onClick={viewInput}
@@ -96,7 +97,7 @@ const Search = () => {
                     <p>Нет результатов</p>
                   </div>
                 ) : (
-                  searchResults.map((item: any) => {
+                  searchResults.map((item: CartItem) => {
                     return (
                       <Link
                         onClick={viewInput}
@@ -119,22 +120,5 @@ const Search = () => {
     </div>
   );
 };
-
-function useOutsideClick(ref: any, handler: any, results: any) {
-  useEffect(() => {
-    function handleClickOutside(event: any) {
-      if (ref.current && !ref.current.contains(event.target)) {
-        handler();
-        results([]);
-      }
-    }
-
-    document.addEventListener('mousedown', handleClickOutside);
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
-}
 
 export default Search;

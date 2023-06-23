@@ -1,17 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useResize } from '../../hooks/use-resize';
+import { Link as A } from 'react-scroll';
+import { ReactComponent as Menu } from '../../assets/image/menu.svg';
+import { ReactComponent as Close } from '../../assets/image/close.svg';
 import LogoSvgBlack from '../../assets/image/logo-black.svg';
 import LogoSvgWhite from '../../assets/image/logo-white.svg';
 import ButtonPrimary from '../ButtonPrimary/ButtonPrimary';
 import ButtonCart from './ButtonCart/ButtonCart';
 import Navigation from './Navigation';
-import mod from './Header.module.scss';
 import Search from './Search/Search';
-import { ReactComponent as Menu } from '../../assets/image/menu.svg';
-import { ReactComponent as Close } from '../../assets/image/close.svg';
-import { Link, useLocation } from 'react-router-dom';
 import Popup from './Popup/Popup';
-import { Link as A } from 'react-scroll';
-import { useResize } from '../../hooks/use-resize';
+import mod from './Header.module.scss';
 
 const Header = () => {
   const [activePopup, setOpenPopup] = useState(false);
@@ -35,10 +35,6 @@ const Header = () => {
     setOpenMenu(false);
     visible()
   }
-
-  // useEffect(() => {
-  //   openMenu === true ? hidden() : visible();
-  // }, [openMenu])
 
   const { isScreenXl } = useResize();
 

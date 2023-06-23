@@ -52,7 +52,7 @@
 .burger {
   width: 100%;
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
   align-items: center;
   margin-right: 50px;
   &__button {

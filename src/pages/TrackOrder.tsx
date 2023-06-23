@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ReactComponent as Close } from '../assets/image/close.svg';
+import Popup from '../components/TrackOrderPageComponents/Popup/Popup';
 import mod from '../scss/TrackOrder.module.scss';
 
 const TrackOrder = () => {
@@ -61,22 +61,7 @@ const TrackOrder = () => {
         </div>
       </div>
 
-      {openPopup && (
-        <div className={mod.popup}>
-          <div className={mod.popup__overflow}></div>
-          <div className={mod.popup__content}>
-            <div className={mod.popup__close}>
-              <Close onClick={closePopup} />
-            </div>
-            <h4 className={mod.popup__title}>Отмена заказа</h4>
-            <p>
-              Для отмены заказа позвоните <br />
-              нам по номеру
-            </p>
-            <h2>8 (800) 245 - 12 - 25</h2>
-          </div>
-        </div>
-      )}
+      {openPopup && <Popup closePopup={closePopup}/>}
     </div>
   );
 };

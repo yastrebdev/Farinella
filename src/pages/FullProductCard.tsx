@@ -1,15 +1,18 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import mod from '../scss/FullProductCard.module.scss';
-import ButtonPrimary from '../components/ButtonPrimary/ButtonPrimary';
-import { CartItem, SupplementsItem, addItem } from '../redux/slices/cartSlice';
+import { SupplementsItem, addItem } from '../redux/slices/cartSlice';
 import { useAppDispatch, useAppSelector } from '../hooks/hook';
 import { RootState } from '../redux/store';
+import ButtonPrimary from '../components/ButtonPrimary/ButtonPrimary';
 import Supplements from '../components/FullPageComponents/Supplements';
+import mod from '../scss/FullProductCard.module.scss';
+import Animation from '../components/FullPageComponents/DownloadAnimation/Animation';
 
 const FullProductCard = () => {
-  const dispatch = useAppDispatch();
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const [product, setProduct] = useState<{
     id: string;
@@ -19,10 +22,13 @@ const FullProductCard = () => {
     description: string;
     added: SupplementsItem;
   }>();
+
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const selectCartItemById = (id: string) => (state: RootState) => state.cart.items.find((obj) => obj.id === id)
+  const selectCartItemById = (id: string) => (state: RootState) =>
+    state.cart.items.find((obj) => obj.id === id);
+
   const cartItem = useAppSelector(selectCartItemById(id ? id : ''));
 
   const addedCount = cartItem ? cartItem.count : 0;
@@ -38,7 +44,9 @@ const FullProductCard = () => {
       }
     }
     fetchProduct();
-  }, []);
+  }, [id, navigate]);
+
+  const dispatch = useAppDispatch();
 
   const addToCart = () => {
     const item: any = {
@@ -49,23 +57,7 @@ const FullProductCard = () => {
   };
 
   if (!product) {
-    return (
-      <div className={mod.wrapper}>
-        <div className={mod.loader}>
-          <div className={mod.circles}>
-            <span className={mod.one}></span>
-            <span className={mod.two}></span>
-            <span className={mod.three}></span>
-          </div>
-          <div className={mod.pacman}>
-            <span className={mod.top}></span>
-            <span className={mod.bottom}></span>
-            <span className={mod.left}></span>
-            <div className={mod.eye}></div>
-          </div>
-        </div>
-      </div>
-    );
+    return <Animation />
   }
 
   return (
@@ -73,7 +65,7 @@ const FullProductCard = () => {
       <div className="container">
         <div className={mod.main__wrapper}>
           <div className={mod.main__product}>
-            <img src={product.urlImg} />
+            <img src={product.urlImg} alt='product'/>
             <div className={mod.main__information}>
               <div className={mod.main__header}>
                 <h2>{product.productName}</h2>
@@ -141,7 +133,7 @@ const FullProductCard = () => {
               </div>
             </div>
           </div>
-          <Supplements ingredients={product.added} id={product.id}/>
+          <Supplements ingredients={product.added} />
         </div>
       </div>
     </div>

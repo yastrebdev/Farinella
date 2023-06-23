@@ -1,11 +1,17 @@
 import { ReactComponent as Close } from '../../../../assets/image/close.svg';
-import { CartItem, addIngredient, minusIngredient, removeIngredient, removeItem } from '../../../../redux/slices/cartSlice';
+import {
+  CartItem,
+  SupplementsItem,
+  addIngredient,
+  minusIngredient,
+  removeIngredient,
+  removeItem,
+} from '../../../../redux/slices/cartSlice';
 import { useAppDispatch, useAppSelector } from '../../../../hooks/hook';
 import { RootState } from '../../../../redux/store';
-import { ReactComponent as Plus } from '../../../../assets/image/plus.svg'
-import { ReactComponent as Minus } from '../../../../assets/image/minus.svg'
 import Counter from '../../../Counter/Counter';
 import mod from './CartPopupItem.module.scss';
+import Supplements from './Supplements/Supplements';
 
 const CartPopupItem: React.FC<CartItem> = ({ urlImg, productName, price, count, id }) => {
   const dispatch = useAppDispatch();
@@ -13,8 +19,8 @@ const CartPopupItem: React.FC<CartItem> = ({ urlImg, productName, price, count, 
   const { supplements } = useAppSelector((state: RootState) => state.cart);
   const productIngredients = supplements.filter((item) => item.asProductId === id);
 
-  const addSupplements = (name: string): any => {
-    const ingredient: any = {
+  const addSupplements = (name: string) => {
+    const ingredient: SupplementsItem = {
       namePlusId: id + name,
       asProductId: id,
       name,
@@ -61,36 +67,11 @@ const CartPopupItem: React.FC<CartItem> = ({ urlImg, productName, price, count, 
           </div>
         </div>
       </div>
-
-      <div className={mod.supplements}>
-        {productIngredients.map((item: any) => (
-          <div className={mod.supplements__item}>
-            <span>{item.name}</span>
-            <div className={mod.supplements__sum}>
-              <span>{item.price * item.count} ₽</span>
-              <div className={mod.supplements__counter}>
-                <div>
-                  <Minus
-                    onClick={() => {
-                      countMinus(item.name, item.count);
-                    }}
-                    className={mod.supplements__counter__button}
-                  />
-                </div>
-                <span>{item.count}</span>
-                <div>
-                  <Plus
-                    onClick={() => {
-                      addSupplements(item.name);
-                    }}
-                    className={mod.supplements__counter__button}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+      <Supplements
+        productIngredients={productIngredients}
+        addSupplements={addSupplements}
+        countMinus={countMinus}
+      />
     </div>
   );
 };

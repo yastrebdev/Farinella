@@ -1,9 +1,9 @@
 import React from 'react';
 import { ReactComponent as Minus } from '../../assets/image/minus.svg';
 import { ReactComponent as Plus } from '../../assets/image/plus.svg';
-import mod from './Counter.module.scss';
 import { useAppDispatch } from '../../hooks/hook';
 import { CartItem as CartItemType, addItem, minusItem } from '../../redux/slices/cartSlice';
+import mod from './Counter.module.scss';
 
 type CounterProps = {
   count: number;

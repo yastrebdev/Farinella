@@ -13,10 +13,10 @@ const Ingredient = ({ name, urlImg, price }: SupplementsItem) => {
 
   const namePlusId = id + name;
 
-  const addSupplements = (): any => {
-    const ingredient: any = {
+  const addSupplements = () => {
+    const ingredient: SupplementsItem = {
       namePlusId,
-      asProductId: id,
+      asProductId: id ? id : '',
       name,
       urlImg,
       price,
@@ -44,7 +44,6 @@ const Ingredient = ({ name, urlImg, price }: SupplementsItem) => {
       <h5>{name}</h5>
       <span className={mod.main__price}>+ {price} ₽</span>
 
-      {/* <Counter count={0} id={id !== undefined ? id : ''}/> */}
       <div className={mod.counter}>
         {addedCount === 0 ? (
           <Minus

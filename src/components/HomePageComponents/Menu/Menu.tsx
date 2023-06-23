@@ -25,8 +25,8 @@ const Menu = () => {
   const menu = filterProducts.map((item: ProductItem) => <ProductCard {...item} />);
 
   const skeletonsSets = [...new Array(4)].map((_, index) => <Skeleton key={index} />);
-  const sets = products.filter((item: any) => item.set);
-  const productsSets = sets.map((item: any) => <ProductCard {...item} />);
+  const sets = products.filter((item: ProductItem) => item.set);
+  const productsSets = sets.map((item: ProductItem) => <ProductCard {...item} />);
 
   return (
     <div id="menu" className={mod.menu}>

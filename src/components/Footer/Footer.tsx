@@ -1,14 +1,12 @@
-import logoWhite from '../../assets/image/logo-white.svg';
-import brandDecor from '../../assets/image/brand-decor.png';
+// import brandDecor from '../../assets/image/brand-decor.png';
 import phone from '../../assets/image/phone.svg';
 import email from '../../assets/image/email.svg';
 import mir from '../../assets/image/mir.png';
 import visa from '../../assets/image/visa.png';
 import masterCard from '../../assets/image/masterCard.png';
-import { ReactComponent as TelegramSvg } from '../../assets/image/telegram.svg';
-import { ReactComponent as VkontakteSvg } from '../../assets/image/vkontakte.svg';
-import { ReactComponent as InstagramSvg } from '../../assets/image/instagram.svg';
+
 import mod from './Footer.module.scss';
+import Media from './Media/Media';
 
 const Footer = () => {
 
@@ -16,38 +14,24 @@ const Footer = () => {
     <div id='contacts' className={mod.footer}>
       <div className="container">
         <div className={mod.footer__wrapper}>
-          <div className={mod.footer__media}>
-            <img className={mod.footer__logo} src={logoWhite} alt="logo-white" />
-            <h4 className={mod.footer__title}>Наши соцсети</h4>
-            <div className={mod.footer__social}>
-              <a href="#">
-                <TelegramSvg />
-              </a>
-              <a href="#">
-                <VkontakteSvg />
-              </a>
-              <a href="#">
-                <InstagramSvg />
-              </a>
-            </div>
-          </div>
+          <Media />
           <div className={mod.footer__info}>
             <div className={mod.footer__item1}>
               <h4 className={mod.footer__title}>Ресторан</h4>
               <ul className={mod.footer__menu}>
-                <a href="#">
+                <a href="#none">
                   <li>Программа лояльности</li>
                 </a>
-                <a href="#">
+                <a href="#none">
                   <li>Условия доставки</li>
                 </a>
-                <a href="#">
+                <a href="#none">
                   <li>Акции доставки</li>
                 </a>
-                <a href="#">
+                <a href="#none">
                   <li>Франшиза</li>
                 </a>
-                <a href="#">
+                <a href="#none">
                   <li>Акции ресторанов</li>
                 </a>
               </ul>
@@ -89,8 +73,8 @@ const Footer = () => {
               <div className={mod.footer__line}></div>
               <div className={mod.footer__copyright}>
                 <span>Все права защищены</span>
-                <a href="#">Пользовательское соглашение</a>
-                <a href="#">Политика обработки данных</a>
+                <a href="#none">Пользовательское соглашение</a>
+                <a href="#none">Политика обработки данных</a>
               </div>
             </div>
           </div>

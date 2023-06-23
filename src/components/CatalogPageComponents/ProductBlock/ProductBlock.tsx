@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppSelector, useAppDispatch } from '../../../hooks/hook';
 import { RootState } from '../../../redux/store';
-import { fetchProducts } from '../../../redux/slices/productSlice';
+import { ProductItem, fetchProducts } from '../../../redux/slices/productSlice';
 
 import ProductCard from '../../ProductCard/ProductCard';
 import ButtonPrimary from '../../ButtonPrimary/ButtonPrimary';
@@ -17,7 +17,7 @@ const ProductBlock = () => {
     dispatch(fetchProducts());
   }, [dispatch]);
 
-  const productsMap = products.map((obj: any) => <ProductCard {...obj} />);
+  const productsMap = products.map((obj: ProductItem) => <ProductCard {...obj} />);
   const skeletons = [...new Array(8)].map((_, index) => <Skeleton key={index} />);
 
   return (
